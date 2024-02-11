@@ -6,7 +6,7 @@ import Signout from "./pages/signout";
 import About from "./pages/about";
 import Header from "./components/header";
 import Profile from "./pages/profile"; // Import the Profile component
-import Signup from "./pages/signup";
+import Signup from "./pages/signup.jsx";
 
 export default function App() {
   return (
