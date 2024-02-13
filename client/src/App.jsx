@@ -5,6 +5,7 @@ import Signin from "./pages/signin";
 import Signout from "./pages/signout";
 import About from "./pages/about";
 import Header from "./components/header";
+import PrivateRoute from "./components/privateroute";
 import Profile from "./pages/profile"; // Import the Profile component
 import Signup from "./pages/signup.jsx";
 
@@ -17,8 +18,9 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />
+        {/* Protected route for profile */}
+        <PrivateRoute path="/profile" element={<Profile />} />
         <Route path="/sign-out" element={<Signout />} />
-        <Route path="/profile" element={<Profile />} /> {/* Use the Profile component */}
       </Routes>
     </Router>
   );
