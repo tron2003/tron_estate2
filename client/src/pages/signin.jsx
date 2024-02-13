@@ -1,12 +1,15 @@
 import { useState } from "react";
+// import { UseDispatch } from "react-redux";}
 import { Link, useNavigate } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 // import {setUser} from "../redux/userSlice.js";
 
 import {signInFailure, signInStart,signInSuccess} from "../redux/user/userslice"
+import Oauth from "../components/oauth";
 
 
 export default function SignIn() {
+  // const dispatch =  useDispatch();
   const [formData, setFormData] = useState({});
   const {loading,error} =useSelector((state)=>state.user);
   const navigate = useNavigate();
@@ -75,6 +78,7 @@ navigate("/");
         >
           {loading ? "Loading..." : "Sign In"}
         </button>
+        <Oauth/>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Don't have an account?</p>
