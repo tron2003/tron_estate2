@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { getStorage, ref, uploadBytesResumable,getDownloadURL } from "firebase/storage";
 import { app } from "../firebase"; // Assuming you have a firebase.js file where you initialize Firebase
-
+//
 export default function Profile() {
   const fileref = useRef(null);
   const { currentUser } = useSelector((state) => state.user);
