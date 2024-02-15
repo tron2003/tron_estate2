@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { getStorage, ref, uploadBytesResumable,getDownloadURL } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 import { app } from "../firebase"; // Assuming you have a firebase.js file where you initialize Firebase
 //
 export default function Profile() {
@@ -41,13 +46,11 @@ export default function Profile() {
         console.error("File upload error:", error);
       },
       () => {
-        getDownloadURL(uploadTask.snapshot.ref).then
-          ((downloadURL) => 
-            setFormData({ ...formData, avatar: downloadURL })
-          );
-         
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
+          setFormData({ ...formData, avatar: downloadURL })
+        );
       }
-    )
+    );
   };
 
   return (
@@ -65,17 +68,23 @@ export default function Profile() {
         {/* Profile image */}
         <img
           onClick={() => fileref.current.click()}
-          src={formData.avatar|| currentUser.avatar}
+          src={formData.avatar || currentUser.avatar}
           alt="profile"
           className="rounded-full h-24 w-24 object-cover cursor-pointer self-center"
         />
         {/* Display upload status */}
         <p className="text-sm self-center">
-          {FileUploadError && <span className="text-red-700">Error Image upload (Iamge should be less tham 2MB)</span>}
+          {FileUploadError && (
+            <span className="text-red-700">
+              Error Image upload (Iamge should be less tham 2MB)
+            </span>
+          )}
           {!FileUploadError && filePerc > 0 && filePerc < 100 && (
             <span className="text-slate-700">Uploading {filePerc}%</span>
           )}
-          {filePerc === 100 && <span className="text-green-700">Image Successfully Uploaded!</span>}
+          {filePerc === 100 && (
+            <span className="text-green-700">Image Successfully Uploaded!</span>
+          )}
         </p>
         {/* Username input */}
         <input
@@ -110,4 +119,4 @@ export default function Profile() {
       </div>
     </div>
   );
-          }
+}
