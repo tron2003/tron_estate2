@@ -4,7 +4,8 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
-
+// import cors from 'cors';
+// import cookieParser from 'cookie-parser';
 dotenv.config();
 
 mongoose
@@ -23,9 +24,13 @@ app.use(cookieParser());
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
-const server = app.listen(0, () => {
-  const port = server.address().port;
-  console.log("Server running on port " + port);
+
+// app.use(cors({
+//   origin: 'http://localhost:5173'
+// }));
+const server = app.listen(3000, () => {
+  // const port = server.address().port;
+  console.log("Server running on port 3000" );
 });
 
 app.use((err, req, res, next) => {

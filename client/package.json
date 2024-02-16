@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-   
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -12,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.0",
+    "cors": "^2.8.5",
     "firebase": "^10.8.0",
     "nodmeon": "^0.0.1-security",
     "react": "^18.2.0",

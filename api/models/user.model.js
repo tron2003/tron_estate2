@@ -12,8 +12,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },avatar:{
- type:String,default:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-
+ type:String,default:"https://media.istockphoto.com/id/1582174301/photo/underwater-phot-of-schooling-fish-near-coral-reef.webp?b=1&s=170667a&w=0&k=20&c=CaTcUEwhRqlOvar-XtQERinW0fMtFz7a1tQGmRpxO_M="
     },
     password: {
       type: String,
