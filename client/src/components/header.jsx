@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { FaSearch } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 export default function header() {
   const { currentUser } = useSelector((state) => state.user);
@@ -37,9 +37,9 @@ export default function header() {
           <Link to="/profile">
             {currentUser ? (
               <img
-                className="rounded-full h07 w07 object-cover"
-                src="currentUser.avatar"
-                alt="profile"
+                className="rounded-full h-7 w-7 object-cover"
+                src={currentUser.avatar}
+                alt='profile'
               />
             ) : (
               <li className="sm:inline text-slate-700 hover:underline">
