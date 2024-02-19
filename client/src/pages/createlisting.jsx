@@ -1,6 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
+import { getDownloadURL, ref, uploadBytesResumable,getStorage } from "firebase/storage";
+
+import { app } from "../firebase";
 
 export default function createlisting() {
+  const [files, setFiles] = useState([]);
+  console.log(files);
+  const [formData, setFormData] = useState({
+    imageUrls: [],
+  });
+  console.log(formData);
+
+
+
+  const handleImageSubmit = async (e) => {
+    if (files.length > 0 && files.length < 7) {
+      const promises = [];
+      for (let i = 0; i < files.length; i++) {
+        promises.push(storeImage(files[i]));
+      }
+
+      Promise.all(promises).then((urls) => {
+        setFormData({
+          ...formData,
+          imageUrls: formData.imageUrls.concat(urls)
+        });
+      });
+    }
+  };
+
+  const storeImage = async (file) => {
+    return new Promise((resolve, reject) => {
+      const storage = getStorage(app);
+
+      const filename = new Date().getTime() + file.name;
+      const storageRef = ref(storage, filename);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        "state_changed",
+        (snapshot)=>{
+          const progress= (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+          console.log('Upload is ${progress}% done')
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            resolve(downloadURL);
+          });
+        }
+      );
+    });
+  };
   return (
     <main className="p-3 max-w-4xl mx-auto  ">
       <h1 className="text-3xl font-semibold text-center my-7">
@@ -119,17 +172,26 @@ export default function createlisting() {
           </p>
           <div className="flex gap-4">
             <input
+              onChange={(e) => {
+                setFiles(e.target.files);
+              }}
               className="p-3 border  border-gray-300 rounded w-full"
               type="file"
               id="images"
               accept="image/*"
               multiple
             />
-            <button className="p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80">
+            <button
+              type="button"
+              onClick={handleImageSubmit}
+              className="p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80"
+            >
               Upload
             </button>
           </div>
-        <button className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80">Create List</button>
+          <button className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
+            Create List
+          </button>
         </div>
       </form>
     </main>
