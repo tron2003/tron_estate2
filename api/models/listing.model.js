@@ -1,62 +1,63 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-// Define the schema for a listing
-const listingSchema = new mongoose.Schema({
+const listingSchema = new mongoose.Schema(
+  {
     name: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     description: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     address: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     regularPrice: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
-    discountPrice: { // Fixed a typo in 'tyep' to 'type'
-        type: Number,
-        required: true,
+    discountPrice: {
+      type: Number,
+      required: true,
     },
-    bathroom: {
-        type: Number,
-        required: true,
+    bathrooms: {
+      type: Number,
+      required: true,
     },
-    bedroom: {
-        type: Number,
-        required: true,
+    bedrooms: {
+      type: Number,
+      required: true,
     },
     furnished: {
-        type: Boolean,
-        required: true,
+      type: Boolean,
+      required: true,
     },
     parking: {
-        type: Boolean,
-        required: true,
+      type: Boolean,
+      required: true,
     },
     type: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     offer: {
-        type: Boolean,
-        required: true,
+      type: Boolean,
+      required: true,
     },
-    imageUrl: { // Changed 'imageurl' to 'imageUrl' to follow camelCase convention
-        type: Array,
-        required: true,
+    imageUrls: {
+      type: Array,
+      required: true,
     },
-    userRef: { // Changed 'useref' to 'userRef' to follow camelCase convention
-        type: String,
-        required: true,
-    }
-}, { timestamps: true }); // Adding timestamps to automatically track createdAt and updatedAt fields
+    userRef: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-// Create a Mongoose model for the listing schema
 const Listing = mongoose.model('Listing', listingSchema);
 
-export default Listing; // Export the Listing model
+export default Listing;
