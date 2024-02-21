@@ -11,7 +11,7 @@ export default function header() {
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
             <span className="text-slate-500">Tron</span>
-            <span className="text-slate-500">Estate</span>
+            <span className="text-slate-700">Estate</span>
           </h1>
         </Link>
         <form className="bg-slate-100 p-3 rounded-lg flex items-center">
@@ -25,12 +25,12 @@ export default function header() {
         <ul className="flex gap-4">
           <Link to="/Home">
             {" "}
-            <li className="hidden sm:inline text-slate-700 hover:underline">
+            <li className="hidden sm:inline text-slate-700 hover:underline font-bold">
               Home
             </li>
           </Link>
           <Link to="/About">
-            <li className="hidden sm:inline text-slate-700 hover:underline">
+            <li className="hidden sm:inline text-slate-700 hover:underline font-bold">
               About
             </li>
           </Link>
