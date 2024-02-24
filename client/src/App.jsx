@@ -9,7 +9,7 @@ import PrivateRoute from "./components/privateroute";
 import CreateListing from "./pages/createlisting.jsx";
 import UpdateListing from "./pages/updatelisting.jsx";
 import Listing from "./pages/listing.jsx";
-
+import Search from "./pages/search.jsx"
 export default function App() {
   return (
     <BrowserRouter>
@@ -19,6 +19,7 @@ export default function App() {
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/about' element={<About />} />
+        <Route path='/search' element={<Search />} />
         <Route path='/listing/:listingId' element={<Listing />} />
 
         <Route element={<PrivateRoute />}>
