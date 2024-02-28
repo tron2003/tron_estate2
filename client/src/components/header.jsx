@@ -51,8 +51,7 @@ export default function header() {
           </button>
         </form>
         <ul className="flex gap-4">
-          <Link to="/Home">
-            {" "}
+          <Link to="/">
             <li className="hidden sm:inline text-slate-800 hover:underline ">
               Home
             </li>

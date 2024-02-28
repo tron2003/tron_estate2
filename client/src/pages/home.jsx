@@ -45,6 +45,26 @@ export default function Home() {
     };
     fetchOfferListings();
   }, []);
+
+  function renderImages(listings) {
+    return listings.map((listing) => (
+      <SwiperSlide key={listing._id}>
+        <div className="h-[500px] w-full">
+          {listing.imageUrls.map((url, index) => (
+            <img
+              key={index}
+              src={url}
+              alt={`Offer ${listing._id}`}
+              className="w-full h-full object-cover"
+            />
+          ))}
+        </div>
+      </SwiperSlide>
+    ));
+  }
+  
+
+
   return (
     <div>
       {/* top */}
@@ -70,18 +90,10 @@ export default function Home() {
 
       {/* swiper */}
       <Swiper navigation>
-        {offerListings &&
-          offerListings.length > 0 &&
-          offerListings.map((listing) => (
-            <SwiperSlide key={listing._id}>
-              <img
-                src={listing.imageUrls[0]}
-                alt={`Offer ${listing._id}`}
-                className="h-[500px] w-full object-cover"
-              />
-            </SwiperSlide>
-          ))}
-      </Swiper>
+  {offerListings &&
+    offerListings.length > 0 &&
+    renderImages(offerListings)}
+</Swiper>
 
       {/* listing results for offer, sale and rent */}
 
