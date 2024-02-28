@@ -48,18 +48,18 @@ export default function Home() {
 
   function renderImages(listings) {
     return listings.map((listing) => (
-      <SwiperSlide key={listing._id}>
-        <div className="h-[500px] w-full">
-          {listing.imageUrls.map((url, index) => (
-            <img
-              key={index}
-              src={url}
-              alt={`Offer ${listing._id}`}
-              className="w-full h-full object-cover"
-            />
-          ))}
-        </div>
-      </SwiperSlide>
+      <Swiper navigation>
+            {listing.imageUrls.map((url) => (
+              <SwiperSlide key={url}>
+                <img
+                  src={url}
+                  alt="Listing"
+                  className="h-100px  object-cover"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
     ));
   }
   
