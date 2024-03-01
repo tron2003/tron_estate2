@@ -64,7 +64,7 @@ export default function Listing() {
                 <img
                   src={url}
                   alt="Listing"
-                  className="h-100px w-auto  object-cover"
+                  className="h-100px w-full  object-cover"
                 />
               </SwiperSlide>
             ))}
